@@ -596,6 +596,68 @@ abline(h=20,col=2) # y=20に横の直線を引く
 \end{screen}
 
 Windows では表示されたグラフを右クリックすることで保存することや Microsoft Office Word に貼り付けることができる．
+
+
+
+
+\noindent
+{\bf \large{Macでの作図}}
+
+Macで作図をする場合，文字が□に化けてしまう．そのため作図前に{\tt par}関数を用いて設定を変更するか，
+\begin{screen}
+\begin{verbatim}
+par(family="HiraKakuProN-W3").
+\end{verbatim}
+\end{screen}
+\verb+~/.Rprofile+を作成する必要がある．
+\begin{screen}
+\begin{verbatim}
+setHook(packageEvent("grDevices", "onLoad"),
+	function(...){
+        if(.Platform$OS.type == "windows")
+            grDevices::windowsFonts(sans ="MS Gothic",
+                                    serif="MS Mincho",
+                                    mono ="FixedFont")
+        if(capabilities("aqua"))
+            grDevices::quartzFonts(
+              sans =grDevices::quartzFont(
+                c("Hiragino Kaku Gothic Pro W3",
+                  "Hiragino Kaku Gothic Pro W6",
+                  "Hiragino Kaku Gothic Pro W3",
+                  "Hiragino Kaku Gothic Pro W6")),
+              serif=grDevices::quartzFont(
+                c("Hiragino Mincho Pro W3",
+                  "Hiragino Mincho Pro W6",
+                  "Hiragino Mincho Pro W3",
+                  "Hiragino Mincho Pro W6")))
+        if(capabilities("X11"))
+            grDevices::X11.options(
+                fonts=c("-kochi-gothic-%s-%s-*-*-%d-*-*-*-*-*-*-*",
+                        "-adobe-symbol-medium-r-*-*-%d-*-*-*-*-*-*-*"))
+        grDevices::pdf.options(family="Japan1GothicBBB")
+        grDevices::ps.options(family="Japan1GothicBBB")
+        }
+)
+
+attach(NULL, name = "JapanEnv")
+assign("familyset_hook",
+       function() {
+            winfontdevs=c("windows","win.metafile",
+                          "png","bmp","jpeg","tiff")
+            macfontdevs=c("quartz","quartz_off_screen")
+            devname=strsplit(names(dev.cur()),":")[[1L]][1]
+            if ((.Platform$OS.type == "windows") &&
+                (devname %in% winfontdevs))
+                    par(family="sans")
+            if (capabilities("aqua") &&
+                devname %in% macfontdevs)
+                    par(family="sans")
+       },
+       pos="JapanEnv")
+setHook("plot.new", get("familyset_hook", pos="JapanEnv"))
+setHook("persp", get("familyset_hook", pos="JapanEnv"))
+\end{verbatim}
+\end{screen}
 \subsection{関数の定義}
 基本的な形式はこの形である．（入力した引数を）演算子し，{\tt return()}で返す．
 \begin{screen}
