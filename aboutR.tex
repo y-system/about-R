@@ -1225,15 +1225,16 @@ List of 12
 \begin{description}
 \item[平均]\mbox{}\\
 \begin{eqnarray*}
-\bar{x}&=&\frac{1}{n}\sum \limits ^i_{n=1}x_i
+\bar{x}&=&\frac{1}{n}\sum \limits ^n_{i=1}x_i
 \end{eqnarray*}
 \item[分散]\mbox{}\\
 \begin{eqnarray*}
-s^2 &=& \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^2 
+s^2 &=& \frac{1}{n} \sum_{i=1}^{n}(x_i - \bar{x})^2 \\
+    &=& \bar{x^2}-\left( \bar{x} \right)^2
 \end{eqnarray*}
-これを標本分散という．
+これを{\bf 標本分散}という．
 \item[不偏分散]\mbox{}\\
-上記の分散は，$\displaystyle E[s^2] = \frac{n-1}{n} \sigma^2 (\sigma^2\mbox{は母集団の分散})$とした場合，標本の分散は母集団の分散よりも小さくなる傾向がある．すなわち，標本の分散は母集団の分散の不偏推定量ではない．不偏分散は以下の式で表される．また，Rの{\tt var}関数では不偏分散が採用されている．
+上記の分散は，$\displaystyle E[s^2] = \frac{n-1}{n} \sigma^2 (\sigma^2\mbox{は母集団の分散})$とした場合，標本の分散は母集団の分散よりも小さくなる傾向がある．すなわち，標本の分散は母集団の分散の不偏推定量ではない．不偏分散は以下の式で表される．また，Rの{\tt var}関数では不偏分散が採用されている．標本数が十分に大きければ標本分散とほぼ等しくなる．
 \begin{eqnarray*}
 u^2 &=& \frac{1}{n-1} \sum_{i=1}^{n}(x_i - \bar{x})^2 
 \end{eqnarray*}
@@ -1299,7 +1300,7 @@ S_{xy}&=&\beta S_{xx}
 ただし，$S_{xx}$と$S_{xy}$は以下である．
 \begin{eqnarray*}
 S_{xx}&=&\sum \limits^n _{i=1}\left( x_i -\bar{x} \right)^2=\sum \limits^n _{i=1}x_i^2-n\bar{x}\\
-S_{xy}&=&\sum \limits^n _{i=1}\left( x_i^2-\bar{x} \right)\left( y_i - \bar{y} \right)=\sum \limits^n _{i=1}x_i y_i -n\bar{x}\bar{y}
+S_{xy}&=&\sum \limits^n _{i=1}\left( x_i-\bar{x} \right)\left( y_i - \bar{y} \right)=\sum \limits^n _{i=1}x_i y_i -n\bar{x}\bar{y}
 \end{eqnarray*}
 以上より，(\ref{estalpha})と(\ref{estbeta})を得る．
 \begin{eqnarray}
