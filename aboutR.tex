@@ -10,6 +10,7 @@
 \usepackage{colortbl}
 \usepackage{eclbkbox}
 \usepackage{indent}
+\usepackage{url}
 \definecolor{bl}{gray}{0.8}
 \definecolor{myred}{rgb}{1,0,0} 
 \definecolor{mygreen}{rgb}{0,1,0} 
@@ -44,48 +45,32 @@
 {\bf \Huge{about:R}}
 \vspace{1em}\\
 \today
-\vspace{1.2em}
-%\includegraphics[width=5cm]{img/chuo.eps}\\
-%\vspace{2em}
-%{\bf \large{中央大学理工学研究科\\経営システム工学専攻\\秋元良友}}
 \end{center}
 \begin{indentation}{2.5cm}{2.5cm}
 \begin{screen}
 \tableofcontents
 \end{screen}
 \end{indentation}
-\vspace{5em}
-\begin{figure}[H]
-  \begin{center}
-    \begin{tabular}{c}
-      % 1
-      \begin{minipage}{0.16\hsize}
-        \begin{center}
-          \includegraphics[width=2cm]{img/chuo.eps}
-        \end{center}
-      \end{minipage}
-      % 2
-      \begin{minipage}{0.29\hsize}
-        \begin{center}
-          {\bf \large{中央大学理工学研究科\\経営システム工学専攻\\
-          \vspace{0.5em}
-          秋元良友}}
-        \end{center}
-      \end{minipage}
-    \end{tabular}
-  \end{center}
-\end{figure}
+\begin{center}
+@y-system
+\end{center}
 \newpage
 \pagenumbering{arabic}
 \section{Rとは}
-1996年に登場した，オープンソースでフリーの統計解析向け言語及び開発実行環境であり，最新バージョンは3.2.0 (2015/4/16 release)．Linux，Windows，OSX で利用可能である．似た言語では S言語があり，Rが開発される前にAT\&Tベル研究所によって開発された統計処理言語である．
+1996年に登場した，オープンソースでフリーの統計解析向け言語及び開発実行環境であり，最新バージョン 3.2.3 (Wooden Christmas-Tree) (2015/12/10 release)．
+Linux，Windows，OSX で利用可能である．
+似た言語では S言語があり，Rが開発される前にAT\&Tベル研究所によって開発された統計処理言語である．
 
-Rではさまざまな構造のデータを保持でき，記法がC言語に似ている為，習得が大変容易である．コントリビュータによって用意されるパッケージも豊富で，その数は5000個以上である．
+Rではさまざまな構造のデータを保持でき，記法がC言語に似ている為，習得が大変容易である．
+コントリビュータによって用意されるパッケージも豊富で，その数は5000個以上である．
 
 \section{Rをインストールしよう}
-まず，{\tt http://www.r-project.org/} にアクセスし，左サイドバーの CRAN をクリックすると，CRAN のミラーサーバを選択する画面が表示されるので，なるべく日本のミラーサーバを選択する．日本でのミラーサーバは神戸教育大学・筑波大学・統計数理研究所に存在している．オススメは統計数理研究所(Institute of Statistical Mathematics, Tokyo)．
+まず，{\tt http://www.r-project.org/} にアクセスし，左サイドバーの CRAN をクリックすると，CRAN のミラーサーバを選択する画面が表示されるので，なるべく日本のミラーサーバを選択する．
+日本でのミラーサーバは山形大学・統計数理研究所に存在している．
+オススメは統計数理研究所(Institute of Statistical Mathematics, Tokyo)．
 
-ミラーサーバにアクセスし，OSを選択する．以下の作業は，リリースされている最新バージョンによって表示が多少異なる．
+ミラーサーバにアクセスし，OSを選択する．
+以下の作業は，リリースされている最新バージョンによって表示が多少異なる．
 また，インストール時の画像は R3.0.2 のものである．
 
 \subsection{Windowsの場合}
@@ -131,6 +116,24 @@ sudo apt-get update
 sudo apt-get install r-base
 \end{verbatim}
 \end{breakbox}
+しかしながら，最新版への更新は遅めになるので，以下のように設定しても良い．
+\verb+/etc/apt/sources.list+を管理者権限でで編集し
+\begin{breakbox}
+\begin{verbatim}
+deb http://cran.ism.ac.jp/bin/linux/ubuntu precise/
+\end{verbatim}
+\end{breakbox}
+を最終行に追記．
+\begin{breakbox}
+\begin{verbatim}
+gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9
+gpg -a --export E084DAB9 | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install r-base
+\end{verbatim}
+\end{breakbox}
+r-baseのレポジトリが標準のubuntuミラーではなくなりCRANのものになる．\\
+細かい話は \url{http://www.trifields.jp/install-r-in-ubuntu-1000} や\\ \url{http://www.trifields.jp/how-to-deal-with-when-you-can-not-update-the-r-in-ubuntu-1515} あたりを参照してください．
 \newpage
 \section{基本的な計算}
 \subsection{起動と使い方}
