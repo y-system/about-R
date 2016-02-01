@@ -38,6 +38,10 @@
 \def\ps@titlepage{\let\@oddhead\@empty}
 \def\ps@titlepage{\let\@evenhead\@empty}
 \makeatother
+% 目次の点の数を変更
+\makeatletter
+\renewcommand{\@dotsep}{3}
+\makeatother
 \begin{document}
 \thispagestyle{empty}
 \begin{center}
