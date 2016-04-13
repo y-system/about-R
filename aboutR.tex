@@ -10,7 +10,15 @@
 \usepackage{colortbl}
 \usepackage{eclbkbox}
 \usepackage{indent}
-\usepackage{url}
+\usepackage{url}\usepackage[dvipdfmx]{hyperref}
+\hypersetup{% hyperオプションリスト http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/hyperref.html
+ a4paper,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=black,%
+ citecolor=black,
+}
 \definecolor{bl}{gray}{0.8}
 \definecolor{myred}{rgb}{1,0,0} 
 \definecolor{mygreen}{rgb}{0,1,0} 
@@ -61,7 +69,7 @@
 \newpage
 \pagenumbering{arabic}
 \section{Rとは}
-1996年に登場した，オープンソースでフリーの統計解析向け言語及び開発実行環境であり，最新バージョン 3.2.3 (Wooden Christmas-Tree) (2015/12/10 release)．
+1996年に登場した，オープンソースでフリーの統計解析向け言語及び開発実行環境であり，最新バージョンは 3.2.4 (Very Secure Dishes) (2016/03/10 release)．3.3.0 (Supposedly Educational) は2016/04/14にリリース予定である．
 Linux，Windows，OSX で利用可能である．
 似た言語では S言語があり，Rが開発される前にAT\&Tベル研究所によって開発された統計処理言語である．
 
@@ -618,7 +626,7 @@ Windows では表示されたグラフを右クリックすることで保存す
 \noindent
 {\bf \large{Macでの作図}}
 
-Macで作図をする場合，文字が□に化けてしまう．そのため作図前に{\tt par}関数を用いて設定を変更するか，
+Macで作図をする場合，文字が□に化けてしまう．（この□はネット上では豆腐と呼ばれる）そのため作図前に{\tt par}関数を用いて設定を変更するか，
 \begin{screen}
 \begin{verbatim}
 par(family="HiraKakuProN-W3").
@@ -897,11 +905,43 @@ dataB=read.table(file,header=FALSE,sep="",skip=0,...)
 また，{\tt header}はテキストにタイトル行がある場合に指定し，{\tt skip}はデータの最初の行にコメント行がある場合読み飛ばす行数を指定する．
 
 {\tt file}の部分はファイルのパスを指定する．面倒な場合は，{\tt file.choose()}とすることでファイルを選択できる．
+
+ちなみに\verb+read.csv+は\verb+read.table+の引数が指定されたエイリアスです．
 \begin{screen}
 \begin{verbatim}
 dataA=read.csv(file.choose()) # ファイル選択ウィンドウが表示される．
 \end{verbatim}
 \end{screen}
+\subsection{データの書き出し}
+データの読み込みがあるのでもちろんデータの書き出しもできます．
+汎用性の高い形式からR独自の形式までいろいろあります．
+解析の途中で一度Rを閉じる場合でもデータなどを残しておけばあっという間に復帰できます．
+\subsubsection{CSV （主にテキスト）}
+\begin{screen}
+\begin{verbatim}
+write.csv(オブジェクト名, file = "ファイル名.csv", quote = FALSE,
+    sep = ", ", row.names = FALSE, colnames = TRUE)
+\end{verbatim}
+\end{screen}
+こちらも\verb+write.table+のエイリアスで，基本的には互換性の高いCSVでの出力用のオプションとなっている．\verb+quote+は値を「"」で囲むかどうか，\verb+sep+は区切り文字，あとは列名行名を出力するかどうかのboolean．
+
+\subsubsection{バイナリデータ（R専用）}
+\begin{screen}
+\begin{verbatim}
+save(オブジェクト, file = "ファイル名.Rdata")
+\end{verbatim}
+\end{screen}
+バイナリデータなのでテキストエディタでは編集できず，Rでしか読み込めない．生成されたファイルは\verb+load+関数かRにドラッグ・アンド・ドロップすれば元の変数名のまま読み込まれる．
+
+\subsubsection{テキストデータ（R専用）}
+\begin{screen}
+\begin{verbatim}
+dump(list, file="ファイル名.R", append=FALSE)
+\end{verbatim}
+\end{screen}
+こちらもR専用のデータ形式．中身はテキストデータで表現され，編集可能．Rの命令として書き出される．\verb+source+関数かRにドラッグ・アンド・ドロップすれば元の変数名のまま読み込まれる．
+便宜上\verb+list+としているが，\verb+"オブジェクト名"+とすれば良い．
+\verb+append+は既にファイルが存在する場合に後ろに追記するか上書きするかのbooleanである．
 \subsection{回帰分析}
 統計的な解析をするうえで，線形回帰分析というものがある．これはデータ$X$とデータ$Y$がどのような関係にあるのかを定量的に式であてはめて分析する手法である．つまり，$Y$を目的変数，$X$を説明変数として，次の式を考える．
 \begin{eqnarray*}
