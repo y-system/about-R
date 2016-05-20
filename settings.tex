@@ -1,0 +1,45 @@
+\hypersetup{% hyperオプションリスト http://www.biwako.shiga-u.ac.jp/sensei/kumazawa/tex/hyperref.html
+ a4paper,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=black,%
+ citecolor=black,
+}
+\definecolor{bl}{gray}{0.8}
+\definecolor{myred}{rgb}{1,0,0} 
+\definecolor{mygreen}{rgb}{0,1,0} 
+\definecolor{myblue}{rgb}{0,0,1} 
+\definecolor{mycyan}{rgb}{0,1,1} 
+\definecolor{mymagenta}{rgb}{1,0,1} 
+\definecolor{myyellow}{rgb}{1,1,0} 
+%--余白の設定
+\setlength{\topmargin}{20mm}
+\addtolength{\topmargin}{-1in}
+\setlength{\oddsidemargin}{20mm}
+\addtolength{\oddsidemargin}{-1in}
+\setlength{\evensidemargin}{15mm}
+\addtolength{\evensidemargin}{-1in}
+\setlength{\textwidth}{170mm}
+\setlength{\textheight}{254mm}
+\setlength{\headsep}{0mm}
+\setlength{\headheight}{0mm}
+\setlength{\topskip}{0mm}
+% Sectionの自動改ページ
+\makeatletter
+\def\section{\newpage\@startsection {section}{1}{\z@}{2.3ex plus -1ex minus -.2ex}{2.3 ex plus .2ex}{\Large\bf}}
+\makeatother
+\makeatletter
+\def\@oddhead{}
+\def\@evenhead{}
+\def\@evenfoot{\normalfont\rmfamily\hfil---\,\thepage\,---\hfil}
+\def\@oddfoot{\normalfont\rmfamily\hfil---\,\thepage\,---\hfil}
+\def\ps@titlepage{\let\@oddhead\@empty}
+\def\ps@titlepage{\let\@evenhead\@empty}
+\makeatother
+% 目次の点の数を変更
+\makeatletter
+\renewcommand{\@dotsep}{3}
+\makeatother
+% sfフォントの変更（主に：sectionの数字）
+\renewcommand{\sfdefault}{pplx}

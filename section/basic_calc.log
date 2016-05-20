@@ -1,0 +1,26 @@
+This is e-pTeXk, Version 3.1415926-p3.1.11-100420 (utf8.euc) (TeX Live 2009) (format=eplatex 2010.5.24)  20 MAY 2016 10:46
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**basic_calc.tex
+(./basic_calc.tex
+pLaTeX2e <2006/11/10>+0 (based on LaTeX2e <2009/09/24> patch level 0)
+! Undefined control sequence.
+l.1 \section
+            {基本的な計算}
+? 
+! Emergency stop.
+l.1 \section
+            {基本的な計算}
+End of file on the terminal!
+
+ 
+Here is how much of TeX's memory you used:
+ 4 strings out of 494089
+ 54 string characters out of 3152919
+ 50001 words of memory out of 3000000
+ 3498 multiletter control sequences out of 15000+200000
+ 7511 words of font info for 31 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 4i,0n,1p,39b,8s stack positions out of 5000i,500n,10000p,200000b,50000s
+No pages of output.
