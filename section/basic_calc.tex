@@ -3,17 +3,17 @@
 通常 \verb+>+ が表示されており，入力待ちの状態である．式や関数を入力しEnterを押せば計算結果が表示される．
 \begin{breakbox}
 \begin{verbatim}
-> 1+2
+> 1 + 2
 [1] 3
-> (1+2i)*(1-2i)
+> (1 + 2i) * (1 - 2i)
 [1] 5+0i
 > sum(1:10)
 [1] 55
-> rep(1,10)
+> rep(1, 10)
 [1] 1 1 1 1 1 1 1 1 1 1
-> seq(1,5,0.5)
+> seq(1,5, 0.5)
 [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0
-> ubuntu<-c(1,2,3,4,5,6)
+> ubuntu <- c(1, 2, 3, 4, 5, 6)
 > ubuntu
 [1] 1 2 3 4 5 6
 # コメントアウトは # です．
@@ -66,18 +66,18 @@
 前に使った命令は入力時にキーボードの「↑」を押すと履歴をさかのぼることができる．
 \begin{breakbox}
 \begin{verbatim}
-> 2*ubuntu
+> 2 * ubuntu
 [1]  2  4  6  8 10 12
-> 秋元="akimoto"
-> 秋元
-[1] "akimoto"
-> debian=matrix(1:12,3,4)
+> 大学 = "univ"
+> 大学
+[1] "univ"
+> debian = matrix(1:12, 3, 4)
 > debian
      [,1] [,2] [,3] [,4]
 [1,]    1    4    7   10
 [2,]    2    5    8   11
 [3,]    3    6    9   12
-> matrix(1:12,3,4,byrow=T)
+> matrix(1:12, 3, 4, byrow = T)
      [,1] [,2] [,3] [,4]
 [1,]    1    2    3    4
 [2,]    5    6    7    8
@@ -88,30 +88,30 @@
 [2,]    4    5    6
 [3,]    7    8    9
 [4,]   10   11   12
-> debian*debian
+> debian * debian
      [,1] [,2] [,3] [,4]
 [1,]    1   16   49  100
 [2,]    4   25   64  121
 [3,]    9   36   81  144
-> debian%*%t(debian)
+> debian %*% t(debian)
      [,1] [,2] [,3]
 [1,]  166  188  210
 [2,]  188  214  240
 [3,]  210  240  270
 > ubuntu[3]
 [1] 3
-> debian[2,]
+> debian[2, ]
 [1]  2  5  8 11
-> debian[,3]
+> debian[, 3]
 [1] 7 8 9
-> debian[2,3]
+> debian[2, 3]
 [1] 8
 \end{verbatim}
 \end{breakbox}
 
 四則演算の演算子では，要素のそれぞれが計算され，行列の積は計算できない．
 
-この{\tt matrix}関数では\verb+matrix(行列の要素,行の数,列の数,…)+というようにオプション引数が存在する．この引数を確認するには\verb+args(matrix)+と入力することで確認できる．
+この{\tt matrix}関数では\verb+matrix(行列の要素, 行の数, 列の数, …)+というようにオプション引数が存在する．この引数を確認するには\verb+args(matrix)+と入力することで確認できる．
 \begin{breakbox}
 \begin{verbatim}
 > args(matrix)
@@ -136,11 +136,11 @@ starting httpd help server ... done
 
 \subsection{便利に使う}
 Rではコンソール画面の他にエディタ画面も用意されている．Macの場合は画面上部のアイコンをクリックして画面を表示する．\\
-\includegraphics[width=7cm]{img/maceditor.eps}\\
+\includegraphics[width=10cm]{img/maceditor.eps}\\
 Windowsの場合は上部メニューのファイル＞新しいスクリプトをクリックする．\\
 \includegraphics[width=7cm]{img/wineditor.eps}
 
-エディタ画面では，編集した内容をCtrl(Command)＋RやCtrl(Command)＋Enterで選択した部分はキャレット（カーソル）がある行を実行することができる．
+エディタ画面では，編集した内容を \kbd{Ctrl} ＋ \kbd{R} や \kbd{\includegraphics[height=0.9em]{img/commandKey.eps} Command} ＋ \kbd{Enter} で選択した部分はキャレット（カーソル）がある行を実行することができる．
 
 また，コンソール画面では関数名・オブジェクト名を打っている途中でTABキーを押すと候補が表示される．
 \subsection{オブジェクトの管理と設定}
@@ -177,7 +177,7 @@ Windowsの場合は上部メニューのファイル＞新しいスクリプト�
 \label{03AB-A2}
 \begin{tabular}{c|l|l}
 \noalign{\hrule height 1pt}
-&\multicolumn{1}{l|}{型の確認}&\multicolumn{1}{c}{変換}\\ \hline
+&\multicolumn{1}{c|}{型の確認}&\multicolumn{1}{c}{変換}\\ \hline
 実数&\verb+is.numeric()+&\verb+as.numeric()+\\
 整数&\verb+is.integer()+&\verb+as.integer()+\\
 複素数&\verb+is.complex()+&\verb+as.complex()+\\
@@ -260,7 +260,7 @@ Windowsの場合は上部メニューのファイル＞新しいスクリプト�
 > rm(debian)
 > ls()
 [1] "chuo"   "ubuntu"
-> rm(list=ls(all=TRUE))
+> rm(list = ls(all = TRUE))
 > ls()
 character(0)
 \end{verbatim}
@@ -279,8 +279,8 @@ character(0)
 \multicolumn{1}{c|}{関　数}&\multicolumn{1}{c}{種　類}\\ \hline
 \verb+c(x1,x2,...)+ &配列(ベクトルの作成)\\
 \rowcolor{bl} \verb+rep(x,times)+ &{\tt x}を{\tt times}回繰り返す\\
-\verb+seq(初項,末項,公差)+ &等差数列の作成\\
-\rowcolor{bl} \verb+matrix(c(x1,x2,...),行数,列数,byrow=FALSE)+ &行列の作成 ({\tt byrow}は配列を列方向に代入する引数)\\
+\verb+seq(初項, 末項, 公差)+ &等差数列の作成\\
+\rowcolor{bl} \verb+matrix(c(x1, x2, ...),行数, 列数, byrow = FALSE)+ &行列の作成 ({\tt byrow}は配列を列方向に代入する引数)\\
 \verb+abs(x)+ &絶対値\\
 \rowcolor{bl} \verb+mean(x)+ &平均\\
 \verb+var(x)+ &分散\\
@@ -293,7 +293,7 @@ character(0)
 \rowcolor{bl} \verb+eigen(x)+ &固有値と固有ベクトル\\
 \verb+sqrt(x)+ &平方根\\
 \rowcolor{bl} \verb+exp(x)+ &指数関数\\
-\verb+log(x,base=exp(1))+ &{\tt base}を底とした対数\\
+\verb+log(x, base = exp(1))+ &{\tt base}を底とした対数\\
 \rowcolor{bl} \verb+sum(x)+ &総和\\
 \verb+cumsum(x)+ &累積和\\
 \rowcolor{bl} \verb+prod(x)+ &総乗\\
@@ -335,30 +335,29 @@ Rでは乱数発生アルゴリズムが存在する．併せて確率密度関�
 \begin{tabular}{l||l|l}
 \noalign{\hrule height 1pt}
 \multicolumn{1}{c||}{確率分布}&\multicolumn{1}{c|}{関数}&\multicolumn{1}{c}{引数}\\ \hline
-一様分布&{\tt unif}&{\tt min=0,max=1}\\
+一様分布&{\tt unif}&{\tt min = 0, max = 1}\\
 二項分布&{\tt binom}&{\tt size, prob}\\
-正規分布&{\tt norm}&{\tt mean=0,sd=1}\\
+正規分布&{\tt norm}&{\tt mean = 0, sd = 1}\\
 ポアソン分布&{\tt pois}&{\tt lambda}\\
-指数分布&{\tt exp}&{\tt rate=1}\\
-$\chi^2$分布&{\tt chisq}&{\tt df,ncp=0}\\
+指数分布&{\tt exp}&{\tt rate = 1}\\
+$\chi^2$分布&{\tt chisq}&{\tt df, ncp = 0}\\
 \noalign{\hrule height 1pt}
 \end{tabular}
 \end{center}
 \end{table}
 
-つまり，一様分布$U(0,1)$において，$P(X=0.5)$の確率を求めたい場合は\verb+dunif(0.5)+，$P(X<0.5)$を求めたい場合は\verb+punif(0.5)+，$P(X<y)=0.5$となる$y$を求める場合は\verb+qunif(0.5)+，この一様分布に従う乱数を10個生成したい場合は\verb+runif(10)+となる．
+つまり，一様分布$U(0,1)$において，$P(X=0.5)$の確率を求めたい場合は\verb+dunif(0.5)+，$P(X < 0.5)$を求めたい場合は\verb+punif(0.5)+，$P(X < y)=0.5$となる$y$を求める場合は\verb+qunif(0.5)+，この一様分布に従う乱数を10個生成したい場合は\verb+runif(10)+となる．
 \subsection{作図}
 ここでは，{\tt plot}関数を用いて作図を行う．\\
-基本形は{\tt plot(x,y)}もしくは{\tt plot(y\verb+~+x)}である．変数が一つでもよい．オプション引数を特に指定しない場合は，自動で適当な作図してくれる．
+基本形は{\tt plot(x, y)}もしくは{\tt plot(y \verb+~+ x)}である．変数が一つでもよい．オプション引数を特に指定しない場合は，自動で適当な作図してくれる．
 \begin{screen}
-\verb+plot(x,y,type="",xlab="",ylab="",main="",sub="",xlim=c(,),ylim=c(),axes=TRUE,pch="",+\\
-\verb+col="",lty="",lwd="")+ 
+\verb+plot(x, y, type = "", xlab = "", ylab = "", main = "", sub = "", xlim = c(, ), ylim = c(, ), axes = TRUE, pch = "", col = "", lty = "", lwd = "", ...)+ 
 \end{screen}
 引数を指定しない場合は自動で初期値となる．
 \subsubsection{軸}
 \begin{description}
 \item[軸の表示] \mbox{}\\
-{\tt axes=FALSE}とした場合，図の枠や軸は表示されない．\\
+{\tt axes = FALSE}とした場合，図の枠や軸は表示されない．\\
 その場合,あとから{\tt box()}関数で枠を書くことができる．
 \begin{screen}
 {\tt box()}
@@ -367,25 +366,25 @@ $\chi^2$分布&{\tt chisq}&{\tt df,ncp=0}\\
 \begin{screen}
 \begin{verbatim}
 axis(1) # 下の軸を表示する 2:左，3:上，4:右
-axis(1,at=c(0.4,0.6,0.9)) # 引数 at を用いて軸の任意の箇所に数字を表示することも可能だ．
+axis(1, at = c(0.4, 0.6, 0.9)) # 引数 at を用いて軸の任意の箇所に数字を表示することも可能だ．
 \end{verbatim}
 \end{screen}
 \item[表題] \mbox{}\\
 表題は{\tt main}，サブタイトルは{\tt sub}で指定する．文字列は\verb+""+で指定すること．作図後に表題を追加する場合は{\tt title()}関数を使用する．
 \begin{screen}
 \begin{verbatim}
-title(main="表題",sub="サブタイトル")
+title(main = "表題", sub = "サブタイトル")
 \end{verbatim}
 \end{screen}
 \item[X軸，Y軸の名前] \mbox{}\\
 {\tt xlab}と{\tt ylab}で指定する．同様に，後から追加する場合は{\tt title}関数を使用する．
 \begin{screen}
 \begin{verbatim}
-title(xlab="X軸の名前",ylab="Y軸の名前")
+title(xlab = "X軸の名前", ylab = "Y軸の名前")
 \end{verbatim}
 \end{screen}
 \item[X軸，Y軸の上限と下限] \mbox{}\\
-{\tt xlim=c(上限,下限)}，{\tt ylim=c(上限,下限)}で指定する．
+{\tt xlim = c(上限, 下限)}，{\tt ylim = c(上限, 下限)}で指定する．
 \end{description}
 \subsubsection{種類}
 {\tt type}で指定する．以下はRの標準で用意されているグラフの一覧である．
@@ -397,15 +396,15 @@ title(xlab="X軸の名前",ylab="Y軸の名前")
 \begin{tabular}{c|l}
 \noalign{\hrule height 1pt}
 指定&\multicolumn{1}{c}{種類}\\ \hline
-\verb+type="p"+ &点プロット(2変数でのデフォルト)\\
-\verb+type="l"+ &線プロット(折れ線グラフ・1変数でのデフォルト)\\
-\verb+type="b"+ &点と線のプロット\\
-\verb+type="c"+ &\verb+"b"+ において点を描かないプロット\\
-\verb+type="o"+ &点プロットと線プロットの重ね書き\\
-\verb+type="h"+ &各点からx 軸までの垂線プロット\\
-\verb+type="s"+ &左側の値にもとづいて階段状に結ぶ\\
-\verb+type="S"+ &右側の値にもとづいて階段状に結ぶ\\
-\verb+type="n"+ &軸だけ描いてプロットしない(続けて低水準関数でプロットする場合)\\
+\verb+type = "p"+ &点プロット(2変数でのデフォルト)\\
+\verb+type = "l"+ &線プロット(折れ線グラフ・1変数でのデフォルト)\\
+\verb+type = "b"+ &点と線のプロット\\
+\verb+type = "c"+ &\verb+"b"+ において点を描かないプロット\\
+\verb+type = "o"+ &点プロットと線プロットの重ね書き\\
+\verb+type = "h"+ &各点からx 軸までの垂線プロット\\
+\verb+type = "s"+ &左側の値にもとづいて階段状に結ぶ\\
+\verb+type = "S"+ &右側の値にもとづいて階段状に結ぶ\\
+\verb+type = "n"+ &軸だけ描いてプロットしない(続けて低水準関数でプロットする場合)\\
 \noalign{\hrule height 1pt}
 \end{tabular}
 \end{center}
@@ -465,16 +464,16 @@ title(xlab="X軸の名前",ylab="Y軸の名前")
 > head(colors())
 [1] "white"         "aliceblue"     "antiquewhite"  "antiquewhite1"
 [5] "antiquewhite2" "antiquewhite3"
-> plot(lynx,col=colors()[25])
-> plot(lynx,col="#8080FF")
+> plot(lynx, col = colors()[25])
+> plot(lynx, col = "#8080FF")
 \end{verbatim}
 \end{breakbox}
-{\tt pch}や{\tt col}に\verb+c(1,1,2,1,1)+と指定すれば，任意の箇所だけを色を変えたり，記号を変えることもできる．\\
+{\tt pch}や{\tt col}に\verb+c(1, 1, 2, 1, 1)+と指定すれば，任意の箇所だけを色を変えたり，記号を変えることもできる．\\
 また，{\tt lines()}や{\tt points()}，{\tt abline()}関数を使用して，先ほどのプロットに点や線を重ねて書くこともできる．
 \begin{screen}
 \begin{verbatim}
-abline(v=15) # x=15 に縦の直線を引く
-abline(h=20,col=2) # y=20に横の直線を引く
+abline(v = 15) # x=15 に縦の直線を引く
+abline(h = 20, col = 2) # y = 20に横の直線を引く
 \end{verbatim}
 \end{screen}
 
@@ -531,39 +530,41 @@ assign("familyset_hook",
             devname=strsplit(names(dev.cur()),":")[[1L]][1]
             if ((.Platform$OS.type == "windows") &&
                 (devname %in% winfontdevs))
-                    par(family="sans")
+                    par(family = "sans")
             if (capabilities("aqua") &&
                 devname %in% macfontdevs)
-                    par(family="sans")
+                    par(family = "sans")
        },
        pos="JapanEnv")
-setHook("plot.new", get("familyset_hook", pos="JapanEnv"))
-setHook("persp", get("familyset_hook", pos="JapanEnv"))
+setHook("plot.new", get("familyset_hook", pos = "JapanEnv"))
+setHook("persp", get("familyset_hook", pos = "JapanEnv"))
 \end{verbatim}
 \end{screen}
+面倒だし，やり忘れた人は\verb+plot+時に\verb+family = "Osaka"+ としておけばとりあえず表示には困らない．
+
 \subsection{関数の定義}
 基本的な形式はこの形である．（入力した引数を）演算子し，{\tt return()}で返す．
 \begin{screen}
 \begin{verbatim}
-myfunc<-function(x){
-  a=x%%2
+myfunc <- function(x){
+  a = x%%2
   return(a)
-  }
+}
 \end{verbatim}
 \end{screen}
 \subsubsection{条件分岐(if文)}
 \begin{screen}
 \begin{verbatim}
-myfunc<-function(x){
-  a=x%%2
-  if(a==0){
-    return(TRUE) # a==0 が真の場合の処理
-    }else if(a==1){
-    return(FALSE) # a==0 が偽の場合で a==1 が真の場合の処理
-    }else{
-    return("Not Integer") # a==0 が偽の場合で a==1 が偽の場合の処理
-    }
+myfunc <- function(x){
+  a = x%%2
+  if(a == 0){
+    return(TRUE) # a == 0 が真の場合の処理
+  }else if(a == 1){
+    return(FALSE) # a == 0 が偽の場合で a == 1 が真の場合の処理
+  }else{
+    return("Not Integer") # a == 0 が偽の場合で a == 1 が偽の場合の処理
   }
+}
 \end{verbatim}
 \end{screen}
 この定義した関数で計算した結果が以下である．
@@ -613,9 +614,9 @@ myfunc<-function(x){
 \begin{verbatim}
 > 2==3
 [1] FALSE
-> 2==3||5==5
+> 2 == 3 || 5 == 5
 [1] TRUE
-> c(1,2,3)!=c(3,2,1)
+> c(1, 2, 3) != c(3, 2, 1)
 [1]  TRUE FALSE  TRUE
 \end{verbatim}
 \end{breakbox}
@@ -623,10 +624,10 @@ myfunc<-function(x){
 また，オブジェクトから条件に合うものだけを抽出したり，条件に合うオブジェクト内の要素の番号を得ることもできる．
 \begin{breakbox}
 \begin{verbatim}
-> b=11:30
-> b[b%%2==0] # bを2で割った余りが0の要素を表示
+> b = 11:30
+> b[b %% 2 == 0] # bを2で割った余りが0の要素を表示
  [1] 12 14 16 18 20 22 24 26 28 30
-> which(b%%2==0) # bを2で割った余りが0の要素の番号を表示
+> which(b %% 2 == 0) # bを2で割った余りが0の要素の番号を表示
  [1]  2  4  6  8 10 12 14 16 18 20
 \end{verbatim}
 \end{breakbox}
@@ -636,14 +637,14 @@ myfunc<-function(x){
 for(i in 1:10){
   #関数
   print(i)
-  }
+ }
 # 1:10ではなく任意のベクトルにしてもよい．
 # この場合 i を変数として使える．
 
 while (x <= 5) { # while ( 条件式 )
   x <- x + 1
   # 条件式が TRUE である限り式が繰り返される
-  } 
+} 
 
 \end{verbatim}
 \end{screen}
@@ -735,9 +736,11 @@ This is mgcv 1.7-18. For overview type 'help("mgcv-package")'.
   \end{center}
 \end{figure}
 \item[(すべてのOS)コマンドで設定の場合]\mbox{}\\
+最近では暗号化されたセキュアなサーバも増えてきているので1行目だけでなく2行目の\verb+https_proxy+も忘れないようにしたい．
 \begin{screen}
 \begin{verbatim}
-Sys.setenv("http_proxy"="http://サーバーアドレス:ポート番号")
+Sys.setenv("http_proxy" = "http://サーバーアドレス:ポート番号")
+Sys.setenv("https_proxy" = "http://サーバーアドレス:ポート番号")
 \end{verbatim}
 \end{screen}
 \end{description}
@@ -745,7 +748,7 @@ Sys.setenv("http_proxy"="http://サーバーアドレス:ポート番号")
 また，下の例ように閉じの\verb+"+や\verb+)+を入力せずにEnterを押すと，次の閉じの記号まで，入力待ちになってしまう．この場合，閉じの記号を入力してEnterを押すか，Escを押して先ほどの入力をキャンセルすることができる．
 \begin{breakbox}
 \begin{verbatim}
-> tmp="university
+> tmp = "university
 + 
 \end{verbatim}
 \end{breakbox}

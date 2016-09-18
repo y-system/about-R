@@ -10,7 +10,9 @@
 \usepackage{colortbl, wrapfig}
 \usepackage{eclbkbox}
 \usepackage{indent}
-\usepackage{url}\usepackage[dvipdfmx]{hyperref}
+\usepackage{url}
+\usepackage{fancybox}
+\usepackage[dvipdfmx]{hyperref}
 \input{settings.tex}
 \begin{document}
 \thispagestyle{empty}
@@ -30,6 +32,7 @@
 \end{center}
 \newpage
 \pagenumbering{arabic}
+\pagestyle{fancy}
 \input{section/intro_install.tex}
 \input{section/basic_calc.tex}
 \input{section/analysis.tex}

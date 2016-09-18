@@ -3,12 +3,12 @@
 データを格納しているファイル：CSV(カンマ区切りテキスト)やTSV(タブ区切りテキスト)などを読み込む関数がある．
 \begin{screen}
 \begin{verbatim}
-dataA=read.csv(file,header=TRUE,sep=",", skip=0, ...) 
-dataB=read.table(file,header=FALSE,sep="",skip=0,...) 
+dataA = read.csv(file, header = TRUE, sep = ",", ski p =0, ...) 
+dataB = read.table(file, header = FALSE, sep = "", skip = 0, ...) 
 \end{verbatim}
 \end{screen}
 
-使用するデータがCSVの場合は{\tt read.csv}関数を使用すればよい．スペース区切りなら{\tt read.table}関数，タブ区切りなら{\tt read.table(file,sep="\verb+\+t")}とする．
+使用するデータがCSVの場合は{\tt read.csv}関数を使用すればよい．スペース区切りなら{\tt read.table}関数，タブ区切りなら{\tt read.table(file, sep = "\verb+\+t")}とする．
 
 また，{\tt header}はテキストにタイトル行がある場合に指定し，{\tt skip}はデータの最初の行にコメント行がある場合読み飛ばす行数を指定する．
 
@@ -17,7 +17,7 @@ dataB=read.table(file,header=FALSE,sep="",skip=0,...)
 ちなみに\verb+read.csv+は\verb+read.table+の引数が指定されたエイリアスです．
 \begin{screen}
 \begin{verbatim}
-dataA=read.csv(file.choose()) # ファイル選択ウィンドウが表示される．
+dataA = read.csv(file.choose()) # ファイル選択ウィンドウが表示される．
 \end{verbatim}
 \end{screen}
 \subsection{データの書き出し}
@@ -44,7 +44,7 @@ save(オブジェクト, file = "ファイル名.Rdata")
 \subsubsection{テキストデータ（R専用）}
 \begin{screen}
 \begin{verbatim}
-dump(list, file="ファイル名.R", append=FALSE)
+dump(list, file = "ファイル名.R", append = FALSE)
 \end{verbatim}
 \end{screen}
 こちらもR専用のデータ形式．中身はテキストデータで表現され，編集可能．Rの命令として書き出される．\verb+source+関数かRにドラッグ・アンド・ドロップすれば元の変数名のまま読み込まれる．
@@ -59,15 +59,15 @@ Y&=&\alpha +\beta X
 このように$Y$を$X$で説明するため，最小二乗法という，推定値と観測されたデータの差（残差）の２乗和が最も小さくなる推定を行う．本稿ではデータを生成して，回帰分析を行う．
 \begin{breakbox}
 \begin{verbatim}
-> x2=rnorm(60)
-> y2=runif(60,2,4)*x2
-> plot(x2,y2)
+> x2 = rnorm(60)
+> y2 = runif(60, 2, 4) * x2
+> plot(x2, y2)
 \end{verbatim}
 \begin{center}
 \includegraphics[width=8.2cm]{img/plot2.eps}
 \end{center}
 \begin{verbatim}
-> result2=lm(y2~x2)
+> result2 = lm(y2 ~ x2)
 > result2
 
 Call:
@@ -85,7 +85,7 @@ Y&=&-0.07254-2.98732X
 となる．この回帰直線を赤線でプロットしたものが以下である．
 \begin{breakbox}
 \begin{verbatim}
-> abline(result2,col=2,lwd=2)
+> abline(result2, col = 2, lwd = 2)
 \end{verbatim}
 \begin{center}
 \includegraphics[width=8.2cm]{img/abline2.eps}
@@ -160,9 +160,9 @@ P-値&$<2\times 10^{-16}$\\
 次に，バラバラなデータを解析する．
 \begin{breakbox}
 \begin{verbatim}
-> x1=rnorm(60)
-> y1=rnorm(60)
-> plot(x1,y1)
+> x1 = rnorm(60)
+> y1 = rnorm(60)
+> plot(x1, y1)
 \end{verbatim}
 \begin{center}
 \includegraphics[width=8.2cm]{img/plot1.eps}
@@ -171,7 +171,7 @@ P-値&$<2\times 10^{-16}$\\
 このように先ほどと違い，点がバラバラである．
 \begin{breakbox}
 \begin{verbatim}
-> result1=lm(y1~x1)
+> result1 = lm(y1 ~ x1)
 > result1
 
 Call:
@@ -260,15 +260,15 @@ lm(formula , data,...)
 \begin{tabular}{l|p{11.6cm}}
 \noalign{\hrule height 1pt}
  \multicolumn{1}{c|}{{\tt formula}} & \multicolumn{1}{c}{回帰モデル式}\\ \hline
- \verb|y~x| &$y=\alpha +\beta x+\epsilon$ \\ 
- \verb|y~x1+x2| &$y=\alpha +\beta_1 x_1+\beta_2 x_2 +\epsilon$ \\ 
- \verb|y~x1*x2| & $y=\alpha +\beta_1 x_1+\beta_2 x_2+\beta_3 x_1 x_2+ +\epsilon$\\ 
- \verb|y~x1+x2+x1*x2| & \hspace{6em}〃\\ 
- \verb|y~(x1+x2)^2| & \hspace{6em}〃\\ 
- \verb|y~x-1| & $y=\beta x +\epsilon$ (定数項なし)\\ 
- \verb|y~x+0| & \hspace{6em}〃\\ 
- \verb|y~x+I(x^2)| & $y=\alpha+\beta_1 x+\beta_2 x^2+\epsilon$\\ 
- \verb|y~. , data=データ名| &指定したデータに含まれる{\tt y}を目的変数，{\tt y}以外の変数すべてを説明変数に指定する．($y=\alpha+\beta_1 x_1+\cdots+\beta_p x_p +\epsilon$) \\ 
+ \verb|y ~ x| &$y=\alpha +\beta x+\epsilon$ \\ 
+ \verb|y ~ x1 + x2| &$y=\alpha +\beta_1 x_1+\beta_2 x_2 +\epsilon$ \\ 
+ \verb|y ~ x1 * x2| & $y=\alpha +\beta_1 x_1+\beta_2 x_2+\beta_3 x_1 x_2+ +\epsilon$\\ 
+ \verb|y ~ x1 + x2 + x1 * x2| & \hspace{6em}〃\\ 
+ \verb|y ~ (x1 + x2)^2| & \hspace{6em}〃\\ 
+ \verb|y ~ x - 1| & $y=\beta x +\epsilon$ (定数項なし)\\ 
+ \verb|y ~ x + 0| & \hspace{6em}〃\\ 
+ \verb|y ~ x + I(x^2)| & $y=\alpha+\beta_1 x+\beta_2 x^2+\epsilon$\\ 
+ \verb|y ~. , data = データ名| &指定したデータに含まれる{\tt y}を目的変数，{\tt y}以外の変数すべてを説明変数に指定する．($y=\alpha+\beta_1 x_1+\cdots+\beta_p x_p +\epsilon$) \\ 
 \noalign{\hrule height 1pt}
 \end{tabular}
 \end{center}
@@ -276,10 +276,10 @@ lm(formula , data,...)
 なお，$\epsilon$は誤差項のことである．
 \end{description}
 
-lm関数が返すオブジェクトには，以下の情報が含まれるが特に覚える必要はない．
+\verb+lm+関数が返すオブジェクトには，以下の情報が含まれるが特に覚える必要はない．
 \begin{breakbox}
 \begin{verbatim}
-> result=lm(y2~x2)
+> result = lm(y2 ~ x2)
 > str(result)
 List of 12
  $ coefficients : Named num [1:2] -0.0725 2.9873
@@ -354,7 +354,7 @@ List of 12
 \item 残差平方和\\
 数式で表すと$\sum \limits ^n _{i=1} \left( y-\hat{y} \right)$．\verb+deviance(result)+で取り出すことができる．また，\verb+sum(result2$resid^2)+とするのと同じである．
 \item 推定値\\
-\verb+predict(result)+でモデルに当てはめた値，つまり$y_2$の推定値$\hat{y_2}$を得る．また，\verb+predict(result,newdata=データ名)+とすることで予測を行うこともできる．つまり，$\mbox{残差}=\mbox{観測値}-\mbox{推定値}$ということである．\\
+\verb+predict(result)+でモデルに当てはめた値，つまり$y_2$の推定値$\hat{y_2}$を得る．また，\verb+predict(result, newdata = データ名)+とすることで予測を行うこともできる．つまり，$\mbox{残差}=\mbox{観測値}-\mbox{推定値}$ということである．\\
 ※ データには回帰分析を行ったデータと同じ変数が存在する必要がある．
 \item 作図\\
 \verb+plot(result)+とすると4つ作図される．以下にそれぞれの説明を記す．
@@ -475,7 +475,7 @@ $Y$を目的変数の$n$行1列の行列としてとして，$X$を説明変数�
 \begin{eqnarray*}
 \beta=(X^T X)^{-1}X^T Y
 \end{eqnarray*}
-Rでは\verb+beta=solve(t(x)%*%x)%*%t(x)%*%y+と表現する．
+Rでは\verb+beta = solve(t(x) %*% x) %*% t(x) %*% y+と表現する．
 \item[決定係数]\mbox{}\\
 残差平方和を$S_e=\sum \limits^n _{i=1} e_i^2$とする．目的変数$y$の偏差平方和を$S_{yy}=\sum \limits^n _{i=1}\left( y_i -\bar{y} \right)^2=\sum \limits^n _{i=1}y_i^2-n\bar{y}$とする．
 \begin{eqnarray*}
@@ -485,7 +485,7 @@ R^2&=&1-\frac{S_E}{S_{yy}}
 \item[自由度調整済み決定係数]\mbox{}\\
 説明変数を増やすと決定係数は大きくなるため，サンプル数を$n$，データの中の説明変数の数を$k$として，自由度を調整した決定係数が以下である．
 \begin{eqnarray*}
-(adjusted\ R^2)&=&1-\frac{S_E /(n-k-1)}{S_{yy} /(n-1)}
+({\rm adjusted}\ R^2)&=&1-\frac{S_E /(n-k-1)}{S_{yy} /(n-1)}
 \end{eqnarray*}
 \item[標準誤差]\mbox{}\\
 残差の不偏分散を以下とする．
@@ -503,7 +503,7 @@ SE(\beta)&=&\sqrt{\frac{S_e^2}{\sum \limits ^n _{i=1}\left( x_i-\bar{x} \right)}
 t_\alpha &=&\frac{\alpha}{SE(\alpha)}\\
 t_\beta &=&\frac{\beta}{SE(\beta)}
 \end{eqnarray*}
-このt値に対応するp値は{\tt pt}関数で求めることができる．t値は帰無仮説：係数が0であるという仮説検定の統計量である．p値が有意水準(0.05,0.01,0.005)よりも小さい場合は，p値の右側にそれぞれ(*,**,***)を付ける．
+このt値に対応するp値は{\tt pt}関数で求めることができる．t値は帰無仮説：係数が0であるという仮説検定の統計量である．p値が有意水準(0.05,0.01,0.005)よりも小さい場合は，p値の右側にそれぞれ(*, **, ***)を付ける．
 \item[F値]\mbox{}\\
 F値は帰無仮説：すべての係数が0であるという仮説検定の統計量である．F値は決定係数から求められ，自由度$k$，$n-k-1$のF分布に従う．
 \begin{eqnarray*}
