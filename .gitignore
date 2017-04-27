@@ -13,4 +13,10 @@ Icon
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-
+aboutR.log
+aboutR.out
+aboutR.synctex.gz
+aboutR.toc
+eclbkbox.sty
+indent.sty
+slashbox.sty
